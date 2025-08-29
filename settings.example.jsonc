@@ -1,0 +1,83 @@
+{
+	"IMPORTANT NOTES": {
+		"NOTE 1": "Refer to settings.example.jsonc for setting explanations and default values.",
+		"NOTE 2": "All settings in this file are strings and belong to a parent section."
+	},
+	"Root": {
+		//Path to the SSL certificate file for HTTPS. If not found, HTTP is used.
+			"SSLCertificatePath": "./cert.pem",
+		//Path to the SSL key file for HTTPS. If not found, HTTP is used.
+			"SSLKeyPath": "./key.pem"
+	},
+	"Beep": {
+		//Path to the script to execute
+			"ScriptLocation": "/bin/beep"
+	},
+	"OpenFiles": {
+		//Name of the dialog window, appended with 'Open' or 'Add' based on the URL parameter OpenType.
+			"DialogName": "Music",
+		//File filters for the dialog, separated by '&'. Format: 'Name | glob1 glob2 ...'.
+			"FileFilters": "Playlists | *.m3u *.m3u8 & Music files | *.mp3 *.wav *.midi *.flac *.wma *.ogg & All files | *",
+		//Command to execute with selected files as parameters.
+			"ExecCommand": "/usr/bin/celluloid",
+		//First parameter added to ExecCommand when URL parameter OpenType is 'Add'.
+			"AppendCommand": "--enqueue",
+		//Left position of the dialog window (in pixels). These dialog position variables ARE NOT updated.
+			"DialogLeft": "600",
+		//Top position of the dialog window (in pixels). Adjust by subtracting window decoration height (e.g., 72 pixels).
+			"DialogTop": "600",
+		//Width of the dialog window (in pixels).
+			"DialogWidth": "600",
+		//Height of the dialog window (in pixels).
+			"DialogHeight": "600",
+		//Initial directory path for the dialog. Updated to the last successful path.
+			"OpenPath": "CURRENT_WORKING_DIRECTORY",
+		//String prepended to all selected file paths (e.g., 'z:' for Wine).
+			"PathPrepend": "",
+		//Directory separator for file paths (e.g., '/' for Unix, '\' for Wine).
+			"DirectorySeparator": "/"
+	},
+	"Volume": {
+		//Volume threshold for relative changes. Volume pauses at this value until $BufferSize relative change messages are received, then increases beyond.
+		//Everything above this value is considered over-max
+		"NormalVolumeMax": "100",
+		//Number of relative volume change messages to buffer before increasing volume past $NormalVolumeMax.
+		"BufferSize": "5",
+		//Maximum volume in over-max mode (when above $NormalVolumeMax).
+		"OverMaxVolumeMax": "200",
+		//Fallback volume used if the system volume query fails.
+		"DefaultVolume": "50",
+		//Y-axis position (in pixels) for the volume bar on the screen.
+		"VolumeBarTop": "30",
+		//X-axis offset (in pixels) added to the volume bar's position.
+		"VolumeBarLeftOffset": "0",
+		//Screen width (in pixels) used to center the volume bar.
+		//Left position calculated as $VolumeBarLeftOffset+($ScreenWidth-$PercentPixelWidth*$OverMaxVolumeMax)/2
+		"ScreenWidth": "1920",
+		//Pixel width per percentage point of volume for the volume bar.
+		"PercentPixelWidth": "6",
+		//Volume bar height (in pixels)
+		"VolumeBarHeight": "80",
+		//Number of idle milliseconds before hiding the volume bar
+		"VolumeBarTimeout": "2000",
+		//The text size (and height)
+		"TextSize": "64",
+		//The bash command to get the current volume
+		"GetCurVolumeCommand": "pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '[0-9]+(?=%)' | head -1",
+		//The bash command to set the current volume. Replaces $1 with the new volume
+		"SetCurVolumeCommand": "pactl set-sink-volume '@DEFAULT_SINK@' $1%",
+		//Volume bar font path
+		"FontPath": "/usr/share/fonts/truetype/freefont/FreeSans.ttf",
+		//Color of the volume bar (Must be 8 hexadecimal digits)
+		"BGColor": "00000034",
+		//Color of the volume bar current volume (Must be 8 hexadecimal digits)
+		"VolColor": "0000FF34",
+		//Color of the volume bar over-max volume (Must be 8 hexadecimal digits)
+		"OverMaxColor": "FF000034",
+		//Color of the volume bar text (Must be 8 hexadecimal digits)
+		"TextColor": "FFFFFFFF",
+		//Run extra X windows functions that use "dangerous" behavior. If the program is crashing, this is probably why.
+		//This includes for the volume bar: Keep on top, pass mouse through, do not show on taskbar, and make non-focusable.
+		"RunExtraXWinCode": "1"
+	}
+}
