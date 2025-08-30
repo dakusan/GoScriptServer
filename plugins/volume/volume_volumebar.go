@@ -1,13 +1,6 @@
 package plugin_volume
 
 import (
-	"github.com/gopxl/pixel"
-	"github.com/gopxl/pixel/imdraw"
-	"github.com/gopxl/pixel/pixelgl"
-	"github.com/gopxl/pixel/text"
-	"golang.org/x/image/font"
-	"golang.org/x/image/font/basicfont"
-	"golang.org/x/image/font/opentype"
 	"image/color"
 	"os"
 	"runtime"
@@ -15,6 +8,14 @@ import (
 	"script_server/utils"
 	"strconv"
 	"time"
+
+	"github.com/gopxl/pixel"
+	"github.com/gopxl/pixel/imdraw"
+	"github.com/gopxl/pixel/pixelgl"
+	"github.com/gopxl/pixel/text"
+	"golang.org/x/image/font"
+	"golang.org/x/image/font/basicfont"
+	"golang.org/x/image/font/opentype"
 )
 
 type volumeBarCommand int

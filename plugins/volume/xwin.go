@@ -13,11 +13,12 @@ package plugin_volume
 */
 import "C"
 import (
-	"github.com/go-gl/glfw/v3.3/glfw"
-	"github.com/gopxl/pixel/pixelgl"
 	"reflect"
 	"script_server/utils"
 	"unsafe"
+
+	"github.com/go-gl/glfw/v3.3/glfw"
+	"github.com/gopxl/pixel/pixelgl"
 )
 
 type xWinOps struct {

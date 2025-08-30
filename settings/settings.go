@@ -3,9 +3,10 @@ package settings
 
 import (
 	"encoding/json"
-	"github.com/pkg/errors"
 	"os"
 	"script_server/utils"
+
+	"github.com/pkg/errors"
 )
 
 const FileName = "settings.json"
